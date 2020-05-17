@@ -1,0 +1,3 @@
+Interactive Dictionay is a command line python program.
+The program takes a word as input and presents the definition of the word in the dictionary data.
+The dictionary data is present in data.json file.
