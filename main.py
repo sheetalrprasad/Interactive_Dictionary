@@ -14,8 +14,9 @@ data = json.load(open("data/data.json"))
 #getting the word definition
 def getMeaning(word):
     if word in data:
-        for definition in data[word]:
-            print(definition)
+        prettyPrint(data[word])
+    elif word.title() in data:
+        prettyPrint(data[word.title()])    
     elif len(get_close_matches(word,data.keys(),n=3,cutoff=0.8))>0:
         closeMatch = getCloseMatch(word)
         check = input("Did you mean "+getCloseMatch(word).upper()+"? [Yes(Y)/No(N)] ")
@@ -36,6 +37,10 @@ def wordNotExist(code):
         print("Word does not exist. Please check the spelling.")
     elif code == 2 :
         print("I did not understand your query. Please try again.")
+        
+def prettyPrint(definitions):
+    for item in definitions:
+        print(item)
 
 #user input
 exit_q = ""
