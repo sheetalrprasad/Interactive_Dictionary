@@ -17,9 +17,9 @@ def getMeaning(word):
         if (check=='Y' or check== 'y'):
             getMeaning(closeMatch)
         else:
-            wordNotExist()
+            wordNotExist(2)
     else:
-        wordNotExist()
+        wordNotExist(1)
 
 def getCloseMatch(word):
     close_Match = get_close_matches(word,data.keys(),n=3,cutoff=0.7)
