@@ -13,16 +13,13 @@ data = json.load(open("data/data.json"))
 
 #getting the word definition
 def getMeaning(word):
-    if word in data:
+    if word in data: #normal words
         prettyPrint(data[word])
-    elif word.title() in data:
-<<<<<<< HEAD
-        prettyPrint(data[word.title()])
-    elif len(get_close_matches(word,data.keys(),n=3,cutoff=0.7))>0:
-=======
-        prettyPrint(data[word.title()])    
-    elif len(get_close_matches(word,data.keys(),n=3,cutoff=0.8))>0:
->>>>>>> a85aff86fa1d3d5b54226378e8044c572755e6ed
+    elif word.title() in data: #name or title
+        prettyPrint(data[word.title()])  
+    elif word.upper() in data: #acronymns
+        prettyPrint(data[word.upper()])  
+    elif len(get_close_matches(word,data.keys(),n=3,cutoff=0.8))>0: #incorrect spelling
         closeMatch = getCloseMatch(word)
         check = input("Did you mean "+getCloseMatch(word).upper()+"? [Yes(Y)/No(N)] ")
         if (check=='Y' or check== 'y'):
